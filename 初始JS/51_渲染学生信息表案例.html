@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            text-align: center;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+        caption {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        tr {
+            height: 100px;
+            cursor: pointer;
+        }
+        table tr:nth-child(1) {
+            background-color: #ddd;
+        }
+        table tr:not(:first-child):hover {
+            background-color: #eee;
+        }        
+    </style>
+</head>
+<body>
+    <h2>时代少年团信息</h2>
+    <p>将数据渲染到页面中</p>
+    <table>
+        <caption>时代少年团</caption>
+        <tr>
+            <th>序号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>家乡</th>
+        </tr>
+        <script>
+            //1.数据准备
+            let tnt = [
+            {name: '马嘉祺', age: 23, gender: '男',hometown: '河南'},
+            {name: '丁程鑫', age: 23, gender: '男',hometown: '四川'},
+            {name: '宋亚轩', age: 21, gender: '男',hometown: '山东'},
+            {name: '刘耀文', age: 19, gender: '男',hometown: '重庆'},
+            {name: '张真源', age: 22, gender: '男',hometown: '重庆'},
+            {name: '严浩翔', age: 20, gender: '男',hometown: '广东'},
+            {name: '贺峻霖', age: 21, gender: '男',hometown: '四川'}
+        ]
+        // 2.渲染页面
+        for(let i = 0; i < tnt.length; i++) {
+            document.write(`
+            <tr>
+                <td>${i + 1}</td>
+                <td>${tnt[i].name}</td>
+                <td>${tnt[i].age}</td>
+                <td>${tnt[i].gender}</td>
+                <td>${tnt[i].hometown}</td>
+            </tr>
+            `)
+        }
+        </script>
+    </table>
+</body>
+</html>
