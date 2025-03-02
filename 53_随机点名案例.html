@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.随机点名
+        let arr = ['马嘉祺','丁程鑫','宋亚轩','刘耀文','张真源','严浩翔','贺峻霖']
+        let getRandom = Math.floor(Math.random()*(arr.length))
+        document.write(arr[getRandom])
+        //2.且不重复显示 splice(起始位置，删除几个元素)
+        arr.splice(getRandom,1)
+        console.log(arr)
+    </script>
+</body>
+</html>

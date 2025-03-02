@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">123</div>
+    <div class="box">abc</div>
+    <p id="nav">导航栏</p>
+    <ul>
+        <li>tnt</li>
+        <li>tnt</li>
+        <li>tnt</li>
+    </ul>
+    <script>
+        // //1、获取匹配的第一个元素
+        // const box = document.querySelector('div')
+        // //const box = document.querySelector('.box')
+        // console.log(box)
+        // const nav = document.querySelector('#nav')
+        // console.log(nav)
+        // //1、我要获取第一个小uLli
+        // const li = document.querySelector('ul Li:first-child')
+        // console.log(li)
+        // //2、选择所有的小Li
+        // const lis = document.querySelectorAll('ul li')
+        // console.log(lis)
+        //1．获取元素
+        const lis = document.querySelectorAll('.nav li')
+        //console.Log(lis)
+        for (let i = 0; i < lis.length; i++) {
+        console.log(lis[i])//每一个小li对象
+        }
+        const p = document.querySelectorAll('#nav')
+        //console.log(p)
+        p[0].style.color = 'red'
+    </script>
+</body>
+</html>

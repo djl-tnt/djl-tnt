@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 980px;
+            height: 738px;
+            background: url(./980.jpg) no-repeat center / cover;
+            padding: 240px 250px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+    <strong>时代少年团抽奖</strong>
+    <h1>一等奖：<span id="one"></span></h1>
+    <h3>二等奖：<span id="two"></span></h3>
+    <h5>三等奖：<span id="three"></span></h5>
+    </div>
+    <script>
+        //1.声明数组
+        const personArr = ['马嘉祺','丁程鑫','宋亚轩','刘耀文','张真源','严浩翔','贺峻霖']
+        //2.一等奖
+        // 2.1随机数 数组的下标
+        const random = Math.floor(Math.random() * (personArr.length))
+        // document.write(personArr[getRandom])
+        // 2.2获取one元素 把名字写入span元素内部
+        const one = document.querySelector('#one')
+        one.innerHTML = personArr[random]
+        //2.3删除已抽中数组里面的名字
+        personArr.splice(random,1)
+        //console.log(personArr)
+
+        //2.二等奖
+        // 3.1随机数 数组的下标
+        const random2 = Math.floor(Math.random() * (personArr.length))
+        // document.write(personArr[getRandom])
+        // 3.2获取otwo元素 把名字写入span元素内部
+        const two = document.querySelector('#two')
+        two.innerHTML = personArr[random2]
+        //3.3删除已抽中数组里面的名字
+        personArr.splice(random2,1)
+
+        //4.三等奖
+        // 4.1随机数 数组的下标
+        const random3 = Math.floor(Math.random() * (personArr.length))
+        // document.write(personArr[getRandom])
+        // 4.2获取three元素 把名字写入span元素内部
+        const three = document.querySelector('#three')
+        three.innerHTML = personArr[random3]
+        //4.3删除已抽中数组里面的名字
+        personArr.splice(random3,1)
+    </script>
+</body>
+</html>
