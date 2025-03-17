@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+            /* width: 200px; */
+            height: 200px;
+            background-color: aquamarine;   /* 200 */
+            padding: 10px;  /* 220 */
+            border: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>1231231231231231231321321323123123123</div>
+    <script>
+        const div = document.querySelector('div')
+        console.log(div.clientWidth)
+        // resize 浏览窗口大小发生变化的时候触发的事件
+        window.addEventListener('resize',function() {
+            console.log(1)
+        })
+    </script>
+</body>
+</html>

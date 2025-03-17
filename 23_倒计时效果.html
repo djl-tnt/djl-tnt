@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .countdown {
+           width: 240px;
+           height: 305px;
+           text-align: center;
+           line-height: 1;
+           color: #fff;
+           background-color: brown;
+           /* background-size: 240px; */
+           /* float: left; */
+           overflow: hidden;
+         }
+     
+        .countdown.next {
+           font-size: 16px;
+           margin: 25px 0 14px;
+         }
+     
+        .countdown.title {
+           font-size: 33px;
+         }
+     
+        .countdown.tips {
+           margin-top: 80px;
+           font-size: 23px;
+         }
+     
+        .countdown small {
+           font-size: 17px;
+         }
+     
+        .countdown.clock {
+           width: 142px;
+           margin: 18px auto 0;
+           overflow: hidden;
+         }
+     
+        .countdown.clock span,
+        .countdown.clock i {
+           display: block;
+           text-align: center;
+           line-height: 34px;
+           font-size: 24px;
+           float: left;
+         }
+     
+        .countdown.clock span {
+           width: 34px;
+           height: 34px;
+           border-radius: 2px;
+           background-color: #303430;
+         }
+     
+        .countdown.clock i {
+           width: 20px;
+           font-style: normal;
+         }
+       </style>
+</head>
+<body>
+    <div class="countdown">
+        <p class="next">今天是2025年3月16日</p>
+        <p class="title">晚自习倒计时</p>
+        <p class="clock">
+          <span id="hour">00</span>
+          <i>:</i>
+          <span id="minutes">25</span>
+          <i>:</i>
+          <span id="scond">20</span>
+        </p>
+        <p class="tips">18:30:00上课</p>
+      </div>
+      <script>
+        //函数封装getTime
+        function getTime() {
+          // 1.得到现在的时间戳
+        const now = +new Date()
+        // 2.得到将来的时间戳
+        const future = +new Date('2025-3-16 18:30:00')
+        // console.log(now, future)
+        // 3.计算时间差 要转换为秒
+        const time = (future - now)/1000
+        console.log(time)
+        let d = parseInt(time/60/60/24)
+        let h = parseInt(time/60/60%24)
+        h = h < 10 ? '0' + h : h
+        let m = parseInt(time/60%60)
+        m = m < 10 ? '0' + m : m
+        let s = parseInt(time%60)
+        s = s < 10 ? '0' + s : s
+        console.log(h,m,s)
+        // 4.将时间渲染到页面上
+        const hour = document.querySelector('#hour')
+        const minutes = document.querySelector('#minutes')
+        const scond = document.querySelector('#scond')
+        hour.innerHTML = h
+        minutes.innerHTML = m
+        scond.innerHTML = s
+        }
+        getTime()
+
+        //开启定时器
+        setInterval(getTime, 1000)
+      </script>
+</body>
+</html>

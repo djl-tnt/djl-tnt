@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+        <li>five</li>
+        <p>我不想变色</p>
+    </ul>
+    <script>
+        // 点击当前的小li,文字变成红色
+        const ul = document.querySelector('ul')
+        ul.addEventListener('click',function(e) {
+            // alert('11')
+            // console.dir(e.target) 
+            // 事件对象
+            // e.target.style.color = 'red'  
+            // 缺点:p也可以
+            // 需求:只有点击li才有效果
+            if (e.target.tagName === 'LI') {
+                e.target.style.color = 'red'
+            }
+        })
+    </script>
+</body>
+</html>

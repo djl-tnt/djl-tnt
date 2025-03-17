@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 40px;      
+            border: 1px solid pink;
+            text-align: center;
+            line-height: 40px;  
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const div = document.querySelector('div')
+        const date = new Date()
+        div.innerHTML = date.toLocaleString()  //2025/3/16 15:51:09 ,外面写刚开始没有空白
+        setInterval(function () {
+            const date = new Date()
+            div.innerHTML = date.toLocaleString()
+        },1000)
+        // div.innerHTML = date.toLocaleDateString()   // 2025/3/16 
+        // div.innerHTML = date.toLocaleTimeString()   //15:52:38
+    </script>
+</body>
+</html>

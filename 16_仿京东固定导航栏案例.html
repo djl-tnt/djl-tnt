@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 顶部导航栏样式 */
+        .header {
+            background-color: purple;
+            color: white;
+            text-align: center;
+            line-height: 60px; /* 导航栏高度 */
+            position: fixed; /* 固定定位 */
+            width: 100%; /* 撑满页面宽度 */
+            z-index: 100; /* 确保导航栏在最上层 */
+        }
+
+        /* 内容区域样式 */
+        .content {
+            background-color: pink;
+            min-height: 600px;
+            margin-top: 60px; /* 给顶部导航栏留出空间 */
+            position: relative; /* 为内部绝对定位元素提供参考 */
+        }
+
+        /* 秒杀模块样式 */
+        .sk {
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%); /* 垂直居中 */
+        }
+
+        /* 返回顶部模块（基础样式） */
+        .backtop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">我是顶部导航栏</div>
+    <div class="content">
+    <div class="sk">秒杀模块</div>
+    </div>
+    <div class="backtop">
+    <img src="" alt="">
+    <a href="javascript :; "></a>
+    </div>
+    <script>
+        const sk = document.querySelector('.sk')
+        const header = document.querySelector('.header')
+        // 1. 页面滚动事件
+        window.addEventListener('scroll', function () {
+        // 当页面滚动到 秒杀模块的时候,就改变 头部的 top值
+        // 页面被卷去的头部 >= 秒杀模块的位置 offsetTop
+        const n = document. documentElement. scrollTop
+        // if (n >= sk.offsetTop) {
+        // header. style. top = 0
+        // } else {
+        // header.style.top = '-80px'
+        // }
+        header.style.top = n >= sk.offsetTop ? 0 : '-80px'
+        })
+        </script>    
+</body>
+</html>

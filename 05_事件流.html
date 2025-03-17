@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: aqua;
+    }
+
+    .son {
+        width: 200px;
+        height: 200px;
+        background-color: chartreuse;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    </div>
+    <script>
+        // 捕获阶段
+        const fa = document.querySelector('.father')
+        const son = document.querySelector('.son')
+        // document.addEventListener('click',function() {
+        //     alert('我是爷爷')
+        // },true)
+        // fa.addEventListener('click',function() {
+        //     alert('我是爸爸')
+        // },true)
+        // son.addEventListener('click',function() {
+        //     alert('我是儿子')
+        // },true)
+        // 无论点击什么，都是从最高级到所点击的一级 从上往下找
+        // 事件冒泡
+        document.addEventListener('click',function() {
+            alert('我是爷爷')
+        })
+        fa.addEventListener('click',function() {
+            alert('我是爸爸')
+        })
+        son.addEventListener('click',function(e) {
+            alert('我是儿子')
+            // 阻止流动传播
+            e.stopPropagation
+        })
+        // 无论点击那一级,都会从哪一级找回到最高级
+        
+    </script>
+</body>
+</html>
