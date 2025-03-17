@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .slider {
+        width: 480px;
+        height: 350px;
+        overflow: hidden;
+    }
+    .slider-wrapper {
+        width: 100%;
+    }
+    .slider-wrapper img {
+        width: 100%;
+        display: block;
+    }
+    .slider-footer {
+        width: 100%;
+        height: 80px;
+        background-color: rgb(100,67,98);
+        padding: 12px 12px 0 12px;
+        position: relative;
+    }
+    .slider-footer .toggle {
+        position: absolute;
+        right: 0;
+        top: 12px;
+        display: flex;
+    }
+    .slider-footer .toggle button {
+        margin-right: 12px;
+        width: 28px;
+        height: 28px;
+        appearance: none;
+        border: none;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .slider-footer .toggle button:hover {
+        background: rgba(255,255,255,0.2)
+    }
+    .slider-footer p {
+        margin: 0;
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .slider-indicator {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+    .slider-indicator li {
+        width: 8px;
+        height: 8px;
+        margin: 4px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0.4;
+        cursor: pointer;
+    }
+    .slider-indicator li.active {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+    }
+</style>
+<body>
+    <script>
+        //1.初始数据
+                    const sliderData = [
+                        // 两个点
+                        { url: '../images/slider01.jpg', title: '爱意磅礴无声，却不惧流言【蜚蜚】·马嘉祺', color: 'purple' },
+                        { url: '../images/slider02.jpg', title: '少年感溢出来了，完全是配校园剧啊·丁程鑫', color: 'green' },
+                        { url: '../images/slider03.jpg', title: '“笑与泪别后悔去体会·宋亚轩一袭白纱精彩演绎《Julia》”', color: 'blue' },
+                        { url: '../images/slider04.jpg', title: '《耀眼的你》·刘耀文solo', color: 'blue' },
+                        { url: '../images/slider05.jpg', title: '真的笑疯！他在综艺这个赛道上强的可怕·张真源', color: 'blue' },
+                        { url: '../images/slider06.jpg', title: '名利场上的贵公子，好牛逼的颜值·严浩翔', color: 'purple' },
+                        { url: '../images/slider07.jpg', title: '杀疯了！现场突发事故衣服崩开·贺峻霖', color: 'purple' }
+                    ]
+                    //获取元素
+                    const img = document.querySelector('.slider-wrapper img')
+                    const p = document.querySelector('.slider-footer p')
+                    const footer = document.querySelector('.slider-footer')
+                    //1.右按钮
+                    // 1.1获取右侧按钮
+                    const next = document.querySelector('.next')
+                    let i = 0
+                    // 1.2注册点击事件
+                    next.addEventListener('click',function(){
+                        i++
+                        //1.6 判断条件 如果大于8，就复原为0
+                        if(i >= sliderData.length) {
+                            i = 0
+                        }
+                        //1.3得到对应的对象
+                        // console.log(sliderData[i])
+                        // 1.4渲染对应的对象
+                        // img.src = sliderData[i].url
+                        // p.innerHTML = sliderData[i].title
+                        // footer.style.backgroundColor = sliderData[i].color
+                        // // 1.5更换小圆点 先移除先前的类，当前li再添加这个类名
+                        // document.querySelector('.slider-indicator .active').classList.remove('active')
+                        // document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add('active')
+                        toggle()
+                    })
+                    //2.左按钮
+                    // 2.1 获取左侧按钮
+                    const prev = document.querySelector('.prev')
+                    // 2.2 注册点击事件
+                    prev.addEventListener('click',function(){
+                        i--
+                        //2.6 判断条件 如果小于0，就复原为7
+                        if(i < 0) {
+                            i = sliderData.length - 1
+                        }
+                        //2.3 得到对应的对象
+                        // console.log(sliderData[i])
+                        // 2.4渲染对应的数据
+                        // img.src = sliderData[i].url
+                        // p.innerHTML = sliderData[i].title
+                        // footer.style.backgroundColor = sliderData[i].color
+                        // // 2.5更换小圆点 先移除先前的类，当前的li在添加这个类名
+                        // document.querySelector('.slider-indicator .active').classList.remove('active')
+                        // document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add('active')
+                        toggle()
+                    })
+                    // 声明一个渲染函数
+                    function toggle() {
+                        // 2.4渲染对应的数据
+                        img.src = sliderData[i].url
+                        p.innerHTML = sliderData[i].title
+                        footer.style.backgroundColor = sliderData[i].color
+                        // 2.5更换小圆点 先移除先前的类，当前的li在添加这个类名
+                        document.querySelector('.slider-indicator .active').classList.remove('active')
+                        document.querySelector(`.slider-indicator li:nth-child(${i+1})`).classList.add('active')
+                    }
+        
+        
+                    // 3.自动播放
+                    let timerId = setInterval(function(){
+                        // 利用js自动调用点击事件
+                        next.click()
+                    },1000)
+                    // 4.鼠标经过大盒子，定时器停止
+                    const slider = document.querySelector('.slider')
+                    // 注册事件
+                    slider.addEventListener('mouseenter',function() {
+                        // 停止定时器
+                        clearInterval(timerId)
+                    })
+        
+                    // 5.鼠标离开大盒子，定时器继续
+                    // 注册事件
+                    slider.addEventListener('mouseleave',function() {
+                        // 开始定时器
+                        clearInterval(timerId)
+                        timerId = setInterval(function(){
+                        // 利用js自动调用点击事件
+                        next.click()
+                        },1000)
+                    })
+                </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .ad-container {
+        width: 600px;
+        height: 150px;
+        background-color: pink;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        color:black;
+    }
+    .ad-container p {
+        margin: 0;
+        font-size: 36px;
+    }
+</style>
+<body>
+        <div class="ad-container">
+            <span class="close-btn">X</span>
+            <p>我是广告</p>
+        </div>
+        <script>
+            // 1.获取事件源
+            const closeBtn = document.querySelector('.close-btn')
+            // 关闭大盒子
+            const adContainer = document.querySelector('.ad-container')
+            // 2.事件侦听
+            closeBtn.addEventListener('click',function() {
+                adContainer.style.display = 'none'
+            })
+        </script>
+</body>
+</html>

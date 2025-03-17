@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    p {
+        color: #880000;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    button:hover {
+        background-color: #f4f4f4;
+    }
+</style>
+<body>
+        <h1>随机点名</h1>
+        <p>名字是：<span id="name-display">这里显示姓名</span></p>
+        <button id="start">开始</button>
+        <button id="end">结束</button>
+        <script>
+            //数据数组
+            const arr = ['马嘉祺','丁程鑫','宋亚轩','刘耀文','张真源','严浩翔','贺峻霖']
+            // 定时器的全局变量
+            let timer = 0
+            // 随即号要全局变量
+            let random = 0
+            //业务1.开始按钮模块
+            const nameDisplay = document.querySelector('#name-display')
+            // 1.1获取开始按钮对象
+            const start = document.querySelector('#start')
+            // 元素获取错误：在获取开始按钮对象时，使用了 document.querySelector('.start')，
+            // 这里的 .start 是类选择器，但在 HTML 中按钮的 id 是 start，应该使用document.getElementById('start') 
+            // 或者 document.querySelector('#start') 来正确获取按钮元素。
+            // 2.添加点击事件
+            start.addEventListener('click',function() {
+                timer = setInterval(function() {
+                //随机数
+                const random = parseInt(Math.random() * arr.length)
+                // console.log(arr[random])
+                nameDisplay.innerHTML = arr[random]
+                },35)
+    
+                // 如果数组里面只有一个值了，不需要再抽取，让两个按钮禁用
+                if(arr.length === 1) {
+                    start.disabled = true
+                    end.disabled = true
+                }
+            })
+            //业务2.获取结束按钮对象
+            const end = document.querySelector('#end')
+            end.addEventListener('click',function() {
+                if(timer){
+                    clearInterval(timer);
+                }
+                //结束了，可以删除当前抽取的那个数组元素
+                arr.splice(random,1)
+                console.log(arr)
+            })
+            
+        </script>
+</body>
+</html>
